@@ -7,7 +7,6 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from settings import settings
-from src.common.exceptions import IncorrectHeaderTokenSchema
 from src.common.services import AbstractRepositoryService
 from src.database.session import async_session
 from src.exceptions import NotAuthenticated

@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from src.tests.routers import tests_v1_router
+
 from src.documents.routers import documents_v1_router
+from src.tests.routers import tests_v1_router
 from src.users.routers import user_v1_router
 
 

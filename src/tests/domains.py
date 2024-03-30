@@ -1,13 +1,16 @@
-from pydantic import BaseModel, validator
-from pydantic import Field
+from uuid import UUID
+
+from pydantic import BaseModel, Field, validator
 
 
 class TestResponseOption(BaseModel):
+    id: UUID
     text: str
     is_correct: bool
 
 
 class TestQuestion(BaseModel):
+    id: UUID
     text: str
     response_options: list[TestResponseOption]
 
@@ -20,5 +23,6 @@ class TestQuestion(BaseModel):
 
 
 class Test(BaseModel):
+    id: UUID
     text: str = Field(..., max_length=30_000)
     questions: list[TestQuestion]

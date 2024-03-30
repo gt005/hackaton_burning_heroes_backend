@@ -1,5 +1,5 @@
-from src.ml_service.services.query import MlTestsQuery
 from src.common.services import AbstractRepositoryService
+from src.ml_service.services.query import MlTestsQuery
 from src.tests.domains import Test
 
 

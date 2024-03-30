@@ -1,8 +1,8 @@
 import time
+from uuid import UUID
 
 import jwt
 
-from uuid import UUID
 from settings import settings
 from src.users.domain import JWT
 

@@ -1,6 +1,7 @@
 from uuid import UUID
 
 from sqlalchemy import select
+
 from src.common.services import AbstractRepositoryService
 from src.users.domain import User
 from src.users.models import UserModel

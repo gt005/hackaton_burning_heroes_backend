@@ -7,11 +7,11 @@ from src.common.dependencies import (
     get_repository,
 )
 from src.exceptions import BadRequest
-from src.users.schemas import UserCreateSchema, UserLoginSchema, UserPublicSchema
-from src.users.services.users.query import UserQuery
-from src.users.services.users.command import UserCommand
 from src.users.domain import JWT, User
+from src.users.schemas import UserCreateSchema, UserLoginSchema, UserPublicSchema
 from src.users.services.jwt.command import JWTCommand
+from src.users.services.users.command import UserCommand
+from src.users.services.users.query import UserQuery
 
 
 user_v1_router = APIRouter(tags=['users'])

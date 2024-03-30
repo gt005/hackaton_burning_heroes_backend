@@ -2,8 +2,8 @@ import tempfile
 
 from fastapi import APIRouter, Depends, UploadFile
 
-from src.documents.utils import extract_text_from_docx, extract_text_from_pdf
 from src.documents.dependencies import validate_file_extension
+from src.documents.utils import extract_text_from_docx, extract_text_from_pdf
 
 
 documents_v1_router = APIRouter(tags=['documents'])
