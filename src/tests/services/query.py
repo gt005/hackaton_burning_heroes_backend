@@ -2,7 +2,7 @@ from uuid import UUID
 
 from src.common.services import AbstractRepositoryService
 from src.tests.domains import Test
-from tests.models import TestModel
+from src.tests.models import TestModel
 
 
 class TestsQuery(AbstractRepositoryService):

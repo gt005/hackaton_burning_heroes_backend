@@ -6,7 +6,12 @@ from fastapi_pagination import add_pagination
 from src.router import router_v1 as api_router_v1
 
 
-app = FastAPI()
+app = FastAPI(
+    docs_url="/api/docs",
+    redoc_url="/api/redoc",
+    openapi_url="/api/openapi.json"  # Указываем новый путь для спецификации OpenAPI
+
+)
 
 app.add_middleware(
     CORSMiddleware,

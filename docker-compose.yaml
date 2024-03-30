@@ -21,16 +21,7 @@ services:
         volumes:
             - burning_heroes_db_data:/var/lib/postgresql/data
         ports:
-            - "5432:5432"
-
-    db_test:
-        container_name: burning_heroes_db_test
-        image: postgres
-        restart: always
-        env_file:
-            - .database_test_env
-        ports:
-            - "5433"
+            - "5432"
 
     fastapi_backend:
         container_name: burning_heroes_fastapi
@@ -44,7 +35,6 @@ services:
             - "8000"
         depends_on:
             - db
-            - db_test
 
 volumes:
     burning_heroes_db_data:
