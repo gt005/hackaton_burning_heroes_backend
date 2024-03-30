@@ -42,3 +42,27 @@ def get_repository(
         return repository(db_session)
 
     return _get_service
+
+
+def get_current_user_id_from_access_token(
+    authorization: HTTPAuthorizationCredentials = Security(HTTPBearer())
+) -> UUID:
+    if authorization.scheme != "Bearer":
+        raise NotAuthenticated()
+
+    try:
+        payload = jwt.decode(
+            authorization.credentials,
+            settings.JWT_SECRET_KEY,
+            algorithms=settings.JWT_ALGORITHM
+        )
+    except jwt.ExpiredSignatureError:
+        raise NotAuthenticated()
+
+    user_id: UUID = UUID(payload.get("user_id"))
+    token_type: str = payload.get("type")
+
+    if user_id is None or token_type != "access":
+        raise NotAuthenticated()
+
+    return user_id

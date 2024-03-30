@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from settings import settings
 from src.database.models import BaseMixin
 from src.tests.models import *  # noqa
+from src.users.models import *  # noqa
 
 
 # this is the Alembic Config object, which provides
