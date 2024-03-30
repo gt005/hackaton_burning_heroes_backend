@@ -9,6 +9,7 @@ from src.database.models import BaseMixin
 class TestModel(BaseMixin):
     __tablename__ = "tests"
     text: Mapped[str] = mapped_column(String(length=30_000))
+    user_creator_id: Mapped[UUID | None] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
 
 
 class TestQuestionModel(BaseMixin):

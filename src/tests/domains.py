@@ -25,4 +25,5 @@ class TestQuestion(BaseModel):
 class Test(BaseModel):
     id: UUID
     text: str = Field(..., max_length=30_000)
+    user_creator_id: UUID | None = None
     questions: list[TestQuestion]

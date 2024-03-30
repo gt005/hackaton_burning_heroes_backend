@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends
 
 from src.common.dependencies import get_repository
-from src.exceptions import BadRequest
+from src.exceptions import BadRequest, NotFound
 from src.tests.domains import Test, TestQuestion
 from src.tests.schemas import QuestionUpdateSchema, TestCreateSchema
 from src.tests.services.command import TestsCommand
@@ -13,6 +13,19 @@ from src.tests.services.questions.query import QuestionQuery
 
 
 tests_v1_router = APIRouter(tags=['tests'])
+
+
+@tests_v1_router.get('/{test_id}')
+async def get_test(
+    test_id: UUID,
+    tests_query: TestsQuery = Depends(get_repository(TestsQuery))
+) -> Test:
+    test: Test = await tests_query.get_by_id(test_id=test_id)
+
+    if test.user_creator_id is None:
+        raise NotFound()
+
+    return test
 
 
 @tests_v1_router.post('/')
